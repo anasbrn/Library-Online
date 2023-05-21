@@ -1,25 +1,21 @@
 package com.libraryonline.LibraryOnline.model.entity;
 
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
 
-@Table(name = "categories")
-@Data
+@Table(name = "favorites")
 @Entity
+@Data
 @NoArgsConstructor
-
-public class Category {
+public class Favorite {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(nullable = false)
-    private String name;
 
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Book> books;
-
+    @ManyToOne
+    @JoinColumn(name = "book_id")
+    private Book book;
 }
