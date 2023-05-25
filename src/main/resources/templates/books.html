@@ -5,6 +5,31 @@
     <title>Books</title>
 </head>
 <body>
-<header th:include="nav"></header>
+    <header th:include="nav"></header>
+    <section class="mx-5 mt-3   ">
+        <h1 style="border-bottom: #d17e37 solid 2px; border-radius: 5%">Books</h1>
+        <div class="mt-5 d-flex flex-wrap gap-5">
+            <div class="product-wrapper mb-40 hidden-sm">
+                <div class="product-img">
+                    <a href="">
+                        <img src="/images/books/the-power-of-now.jpg" alt="book" class="primary" width="150">
+                    </a>
+                    <p>
+                        <a href="" class="text-center text-decoration-none">The power of now</a>
+                    </p>
+                </div>
+            </div>
+            <div class="product-wrapper mb-40 hidden-sm">
+                <div class="product-img">
+                    <a href="">
+                        <img src="/images/books/the-way-of-the-kings.jpg" alt="book2" class="primary" width="150">
+                    </a>
+                </div>
+                <p>
+                    <a href="" class="text-center text-decoration-none">The way of kings</a>
+                </p>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
