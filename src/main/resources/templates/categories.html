@@ -6,5 +6,10 @@
 </head>
 <body>
 <header th:include="nav"></header>
+<table>
+    <tr th:each="category : ${categories}">
+        <th th:text="${category.name}"></th>
+    </tr>
+</table>
 </body>
 </html>
