@@ -23,8 +23,7 @@ public class Book {
     @Column(nullable = false)
     private String image;
 
-    @ManyToOne
-    @JoinColumn(name = "category_id")
+    @ManyToOne()
     private Category category;
 
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
