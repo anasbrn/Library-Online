@@ -1,4 +1,5 @@
 package com.libraryonline.LibraryOnline.service;
+import com.libraryonline.LibraryOnline.model.entity.Book;
 import com.libraryonline.LibraryOnline.repository.BookRepo;
 import com.libraryonline.LibraryOnline.response.BookResponse;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,11 @@ public class BookService {
 
     public List<BookResponse> getAllBooks() {
         return this.bookRepo.findAllBooksWithCategoryName();
+    }
+
+    public Book addBook(Book book) {
+        Book bookAdded = this.bookRepo.save(book);
+        return bookAdded;
     }
 }
 

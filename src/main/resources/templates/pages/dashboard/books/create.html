@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/dashboard}">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Admin Dashboard - Add Book</title>
+</head>
+<body>
+<div class="main-content container-fluid" layout:fragment="content">
+    <div class="d-flex justify-content-between">
+        <div class="page-title">
+            <h3>Add Book</h3>
+            <p class="text-subtitle text-muted">Details of book</p>
+        </div>
+    </div>
+    <section class="section">
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <form th:action="@{/admin/book/store}" method="POST" enctype="application/x-www-form-urlencoded">
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="title" name="title">
+                    </div>
+                    <div class="mb-3">
+                        <label for="author" class="form-label">Author</label>
+                        <input type="text" class="form-control" id="author" name="author">
+                    </div>
+                    <div class="mb-3">
+                        <label for="category" class="form-label">Category</label>
+                        <select class="form-select" id="category" name="category_id">
+                            <option>Select the category</option>
+                            <option th:each="category : ${categories}" th:text="${category.name}" th:value="${category.id}"></option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Image</label>
+                        <input type="file" class="form-control" id="image" name="image">
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea type="text" class="form-control" id="description" name="description"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+</body>
+</html>

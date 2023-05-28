@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/dashboard}">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Admin Dashboard - Add Category</title>
+</head>
+<body>
+<div class="main-content container-fluid" layout:fragment="content">
+    <div class="d-flex justify-content-between">
+        <div class="page-title">
+            <h3>Add Category</h3>
+            <p class="text-subtitle text-muted">Details of categories</p>
+        </div>
+    </div>
+    <section class="section">
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <form th:action="@{/admin/category/store}" method="POST">
+                    <div class="mb-3">
+                        <label for="id" class="form-label">Id</label>
+                        <input type="text" class="form-control" id="id" name="id">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" name="name">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+</body>
+</html>

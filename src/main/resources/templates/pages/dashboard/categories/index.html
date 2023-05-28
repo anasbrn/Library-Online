@@ -2,17 +2,17 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/dashboard}">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Admin Dashboard - Categories</title>
 </head>
 <body>
 <div class="main-content container-fluid" layout:fragment="content">
     <div class="d-flex justify-content-between">
         <div class="page-title">
-            <h3>Books</h3>
-            <p class="text-subtitle text-muted">Manage Books</p>
+            <h3>Categories</h3>
+            <p class="text-subtitle text-muted">Manage Categories</p>
         </div>
         <div>
-            <button class="btn btn-primary">Add Book <i data-feather="plus"></i></button>
+            <a href="/admin/categories/create" class="btn btn-primary">Add Category <i data-feather="plus"></i></a>
         </div>
     </div>
     <section class="section">
@@ -20,7 +20,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <h4 class="card-title">Books</h4>
+                        <h4 class="card-title">Categories</h4>
                         <div class="d-flex ">
                             <i data-feather="download"></i>
                         </div>
@@ -30,25 +30,26 @@
                             <table class='table mb-0' id="table1">
                                 <thead>
                                 <tr>
-                                    <th>Title</th>
-                                    <th>Author</th>
-                                    <th>Category</th>
-                                    <th>Image</th>
+                                    <th>Name</th>
                                     <th>Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    <tr th:each="book : ${books}">
-                                        <td th:text="${book.getTitle()}"></td>
-                                        <td th:text="${book.getAuthor()}"></td>
-                                        <td th:text="${book.getCategoryName()}"></td>
-                                        <td>
-                                            <img th:src="${book.getImage()}" width="50">
-                                        </td>
-                                        <td>
-                                            <img src="/icons/more-vertical.svg">
-                                        </td>
-                                    </tr>
+                                <tr th:each="category : ${categories}">
+                                    <td th:text="${category.getName()}"></td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <img src="/icons/more-vertical.svg">
+                                            </a>
+
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                <li><a class="dropdown-item" href="#">Edit</a></li>
+                                                <li><a class="dropdown-item text-danger" href="#">Delete</a></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
                                 </tbody>
                             </table>
                         </div>
