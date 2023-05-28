@@ -1,4 +1,6 @@
 package com.libraryonline.LibraryOnline.controller;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.libraryonline.LibraryOnline.model.entity.Book;
 import com.libraryonline.LibraryOnline.model.entity.Category;
 import com.libraryonline.LibraryOnline.response.BookResponse;
@@ -6,14 +8,12 @@ import com.libraryonline.LibraryOnline.service.BookService;
 import com.libraryonline.LibraryOnline.service.CategoryService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Controller
+@CrossOrigin(origins = "*")
 public class BookController {
     private final BookService bookService;
     private final CategoryService categoryService;
@@ -37,8 +37,9 @@ public class BookController {
     }
 
     @PostMapping("/admin/book/store")
-    public Book save(@ModelAttribute Book book) {
-        return bookService.addBook(book);
+    public String save(@ModelAttribute("book") Book book) {
+        bookService.addBook(book);
+        return  "redirect:/admin/books";
     }
 
 

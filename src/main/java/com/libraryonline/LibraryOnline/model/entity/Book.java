@@ -2,6 +2,7 @@ package com.libraryonline.LibraryOnline.model.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Fetch;
 
 import javax.persistence.*;
 import java.util.List;
@@ -23,7 +24,8 @@ public class Book {
     @Column(nullable = false)
     private String image;
 
-    @ManyToOne()
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, fetch = FetchType.EAGER)

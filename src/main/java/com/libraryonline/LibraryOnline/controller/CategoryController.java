@@ -1,6 +1,7 @@
 package com.libraryonline.LibraryOnline.controller;
 import com.libraryonline.LibraryOnline.model.entity.Category;
 import com.libraryonline.LibraryOnline.service.CategoryService;
+import org.hibernate.boot.jaxb.Origin;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
+@CrossOrigin(origins = "*")
 public class CategoryController {
 
     private final CategoryService categoryService;
@@ -28,8 +30,9 @@ public class CategoryController {
     }
 
     @PostMapping("/admin/category/store")
-    public Category saveCategory(@RequestBody Category category) {
-        return categoryService.save(category);
+    public String saveCategory(@ModelAttribute("category") Category category) {
+        categoryService.save(category);
+        return "redirect:/admin/categories";
     }
 
 }

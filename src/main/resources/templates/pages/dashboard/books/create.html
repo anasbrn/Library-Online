@@ -26,9 +26,12 @@
                     </div>
                     <div class="mb-3">
                         <label for="category" class="form-label">Category</label>
-                        <select class="form-select" id="category" name="category_id">
+                        <select class="form-select" id="category" name="category">
                             <option>Select the category</option>
-                            <option th:each="category : ${categories}" th:text="${category.name}" th:value="${category.id}"></option>
+                            <option th:each="category : ${categories}" th:value="${category.id}">
+                                <span th:text="${category.name}"></span>
+                            </option>
+
                         </select>
                     </div>
                     <div class="mb-3">

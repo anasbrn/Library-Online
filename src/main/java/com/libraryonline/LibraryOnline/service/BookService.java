@@ -1,5 +1,6 @@
 package com.libraryonline.LibraryOnline.service;
 import com.libraryonline.LibraryOnline.model.entity.Book;
+import com.libraryonline.LibraryOnline.model.entity.Category;
 import com.libraryonline.LibraryOnline.repository.BookRepo;
 import com.libraryonline.LibraryOnline.response.BookResponse;
 import org.springframework.stereotype.Service;
