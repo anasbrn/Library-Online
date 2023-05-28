@@ -23,5 +23,9 @@ public class BookService {
         Book bookAdded = this.bookRepo.save(book);
         return bookAdded;
     }
+
+    public void deleteBook(Integer id) {
+        this.bookRepo.deleteById(id);
+    }
 }
 
