@@ -12,7 +12,7 @@
             <p class="text-subtitle text-muted">Manage Books</p>
         </div>
         <div>
-            <button class="btn btn-primary">Add Book</button>
+            <button class="btn btn-primary">Add Book <i data-feather="plus"></i></button>
         </div>
     </div>
     <section class="section">
@@ -39,12 +39,14 @@
                                 </thead>
                                 <tbody>
                                     <tr th:each="book : ${books}">
-                                        <td th:text="${book.title}"></td>
-                                        <td th:text="${book.author}"></td>
-                                        <td th:text="${book.categoryName}"></td>
-                                        <td th:text="${book.image}"></td>
+                                        <td th:text="${book.getTitle()}"></td>
+                                        <td th:text="${book.getAuthor()}"></td>
+                                        <td th:text="${book.getCategoryName()}"></td>
                                         <td>
-                                            <span class="badge bg-success">Active</span>
+                                            <img th:src="${book.getImage()}" width="50">
+                                        </td>
+                                        <td>
+                                            <img src="/icons/more-vertical.svg">
                                         </td>
                                     </tr>
                                 </tbody>
