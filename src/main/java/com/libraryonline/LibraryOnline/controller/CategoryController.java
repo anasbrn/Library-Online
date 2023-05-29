@@ -35,4 +35,10 @@ public class CategoryController {
         return "redirect:/admin/categories";
     }
 
+    @PostMapping("/admin/category/delete")
+    public String deleteBook(@RequestParam("id") Integer id) {
+        this.categoryService.deleteCategory(id);
+        return "redirect:/admin/categories";
+    }
+
 }
