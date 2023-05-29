@@ -1,11 +1,10 @@
 package com.libraryonline.LibraryOnline.service;
-import com.libraryonline.LibraryOnline.model.entity.Book;
 import com.libraryonline.LibraryOnline.model.entity.Category;
-import com.libraryonline.LibraryOnline.repository.BookRepo;
 import com.libraryonline.LibraryOnline.repository.CategoryRepo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CategoryService {
@@ -25,5 +24,13 @@ public class CategoryService {
 
     public void deleteCategory(Integer id) {
         this.categoryRepo.deleteById(id);
+    }
+
+    public Optional<Category> findById(Integer id) {
+        return this.categoryRepo.findById(id);
+    }
+
+    public Category update(Category category) {
+        return this.categoryRepo.save(category);
     }
 }

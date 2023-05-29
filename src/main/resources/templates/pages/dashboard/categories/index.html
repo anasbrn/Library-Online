@@ -44,7 +44,12 @@
                                             </a>
 
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                <li><a class="dropdown-item" href="#">Edit</a></li>
+                                                <li>
+                                                    <form th:action="@{/admin/category/{id}/edit(id=${category.getId()})}">
+                                                        <input type="hidden" name="id" th:value="${category.getId()}">
+                                                        <button class="dropdown-item" type="submit">Edit</button>
+                                                    </form>
+                                                </li>
                                                 <li>
                                                     <form th:action="@{/admin/category/delete}" method="POST">
                                                         <input type="hidden" name="id" th:value="${category.getId()}">
