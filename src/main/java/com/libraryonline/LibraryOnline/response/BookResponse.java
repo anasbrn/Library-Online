@@ -17,10 +17,13 @@ public class BookResponse {
         this.categoryName = categoryName;
     }
 
+    public BookResponse() {
+
+    }
+
     public Integer getId() {
         return id;
     }
-
     public String getTitle() {
         return title;
     }
@@ -35,5 +38,24 @@ public class BookResponse {
     }
     public String getCategoryName() {
         return categoryName;
+    }
+
+    public void setId(Integer id) {
+         this.id = id;
+    }
+    public void setTitle(String title) {
+        this.title = title;
+    }
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+    public void setImage(String image) {
+        this.image = image;
+    }
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 }

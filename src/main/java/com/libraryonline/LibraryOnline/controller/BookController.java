@@ -6,11 +6,13 @@ import com.libraryonline.LibraryOnline.model.entity.Category;
 import com.libraryonline.LibraryOnline.response.BookResponse;
 import com.libraryonline.LibraryOnline.service.BookService;
 import com.libraryonline.LibraryOnline.service.CategoryService;
+import javassist.NotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @CrossOrigin(origins = "*")
@@ -45,6 +47,23 @@ public class BookController {
     @PostMapping("/admin/book/delete")
     public String deleteBook(@RequestParam("id") Integer id) {
         this.bookService.deleteBook(id);
+        return "redirect:/admin/books";
+    }
+
+    @GetMapping("/admin/book/{id}/edit")
+    public String editBookPage(@RequestParam("id") Integer id, Model model) throws NotFoundException {
+        Optional<BookResponse> bookList = bookService.findById(id);
+        List<Category> categories = categoryService.getAllCategories();
+        BookResponse book = bookList.get();
+        model.addAttribute("book", book);
+        model.addAttribute("categories", categories);
+
+        return "/pages/dashboard/books/edit";
+    }
+
+    @PostMapping("/admin/book/update")
+    public String updateBook(@ModelAttribute("book") Book book) {
+        bookService.update(book);
         return "redirect:/admin/books";
     }
 

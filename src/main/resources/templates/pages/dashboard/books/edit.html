@@ -1,1 +1,53 @@
-ediiiiiiiit page
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/dashboard}">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Admin Dashboard - Edit Book</title>
+</head>
+<body>
+<div class="main-content container-fluid" layout:fragment="content">
+    <div class="d-flex justify-content-between">
+        <div class="page-title">
+            <h3>Edit Book</h3>
+            <p class="text-subtitle text-muted">Details of book</p>
+        </div>
+    </div>
+    <section class="section">
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <form th:action="@{/admin/book/update}" method="POST" enctype="application/x-www-form-urlencoded">
+                    <input type="hidden" name="id" th:value="${book.getId()}">
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="title" name="title" th:value="${book.getTitle()}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="author" class="form-label">Author</label>
+                        <input type="text" class="form-control" id="author" name="author" th:value="${book.getAuthor()}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="category" class="form-label">Category</label>
+                        <select class="form-select" id="category" name="category">
+                            <option>Select the category</option>
+                            <div th:each="category : ${categories}">
+                                <option th:text="${category.getName()}" th:value="${category.id}" th:selected="${book.getCategoryName() == category.getName()}"></option>
+                            </div>
+                            </option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Image</label>
+                        <input type="file" class="form-control" id="image" name="image">
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea type="text" class="form-control" id="description" name="description" th:text="${book.getDescription()}"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+</body>
+</html>
