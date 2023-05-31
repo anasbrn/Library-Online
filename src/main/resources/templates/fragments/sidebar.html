@@ -13,19 +13,19 @@
         <div class="sidebar-menu">
             <ul class="menu">
                 <li class='sidebar-title'>Main Menu</li>
-                <li class="sidebar-item active ">
+                <li class="sidebar-item" th:classappend="${#httpServletRequest.getRequestURI().equals('/admin/dashboard')} ? 'active' : ''">
                     <a href="/admin/dashboard" class='sidebar-link'>
                         <i data-feather="home" width="20"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
+                <li class="sidebar-item" th:classappend="${#httpServletRequest.getRequestURI().equals('/admin/books')} ? 'active' : ''">
                     <a href="/admin/books" class='sidebar-link'>
                         <i data-feather="book-open" width="20"></i>
                         <span>Books</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
+                <li class="sidebar-item" th:classappend="${#httpServletRequest.getRequestURI().equals('/admin/categories')} ? 'active' : ''">
                     <a href="/admin/categories" class='sidebar-link'>
                         <i data-feather="folder"></i>
                         <span>Categories</span>

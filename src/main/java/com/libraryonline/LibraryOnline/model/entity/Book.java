@@ -24,6 +24,9 @@ public class Book {
     @Column(nullable = false)
     private String image;
 
+    @Column(nullable = false)
+    private String file;
+
     @ManyToOne()
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;

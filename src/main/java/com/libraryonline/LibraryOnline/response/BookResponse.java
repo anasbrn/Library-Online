@@ -8,13 +8,16 @@ public class BookResponse {
     private String image;
     private String categoryName;
 
-    public BookResponse(Integer id, String title, String description, String author, String image, String categoryName) {
+    private String file;
+
+    public BookResponse(Integer id, String title, String description, String author, String image, String categoryName, String file) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.author = author;
         this.image = image;
         this.categoryName = categoryName;
+        this.file = file;
     }
 
     public BookResponse() {
@@ -38,6 +41,10 @@ public class BookResponse {
     }
     public String getCategoryName() {
         return categoryName;
+    }
+
+    public String getFile() {
+        return file;
     }
 
     public void setId(Integer id) {
