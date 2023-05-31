@@ -43,7 +43,7 @@
                                         <td th:text="${book.getAuthor()}"></td>
                                         <td th:text="${book.getCategoryName()}"></td>
                                         <td>
-                                            <img th:src="${book.getImage()}" width="50">
+                                            <img th:src="'/images/books/' + ${book.getImage()}" width="50">
                                         </td>
                                         <td>
                                             <div class="dropdown">
