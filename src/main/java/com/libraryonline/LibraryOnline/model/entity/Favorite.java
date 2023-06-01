@@ -15,9 +15,22 @@ public class Favorite {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne
+    @ManyToOne()
+    @JoinColumn(name = "book_id")
     private Book book;
 
     @ManyToOne()
+    @JoinColumn(name = "user_id")
     private User user;
+
+    public void setBookId(Integer bookId) {
+        this.book = new Book();
+        this.book.setId(bookId);
+    }
+
+
+    public void setUserId(Integer userId) {
+        this.user = new User(1, "krforfk", "okrofkr", "doekf", "rofkr", "orkfro");
+        this.user.setId(userId);
+    }
 }

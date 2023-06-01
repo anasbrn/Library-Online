@@ -31,7 +31,16 @@
                     </div>
                     <!-- Product actions-->
                     <div class="d-flex gap-1 card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to fav</a></div>
+                        <div class="text-center">
+                            <form th:action="@{favorite/store}" method="post" enctype="application/x-www-form-urlencoded">
+                                <input type="hidden" name="book_id" th:value="${book.getId()}">
+                                <input type="hidden" name="user_id" th:value="${user.getId()}">
+                                <button class="btn btn-outline-dark mt-auto" type="submit">
+                                    <i class="bi bi-star"></i>
+                                </button>
+                            </form>
+                        </div>
+
                         <div class="text-center">
                             <a class="btn btn-outline-dark mt-auto" th:href="'/files/' + ${book.getFile()}" target="_blank" download>
                                 <i class="bi bi-download"></i>

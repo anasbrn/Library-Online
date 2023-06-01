@@ -3,6 +3,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.libraryonline.LibraryOnline.model.entity.Book;
 import com.libraryonline.LibraryOnline.model.entity.Category;
+import com.libraryonline.LibraryOnline.model.entity.User;
 import com.libraryonline.LibraryOnline.response.BookResponse;
 import com.libraryonline.LibraryOnline.service.BookService;
 import com.libraryonline.LibraryOnline.service.CategoryService;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,10 +27,16 @@ public class BookController {
         this.categoryService = categoryService;
     }
     @GetMapping("/books")
-    public String getAllBooks(Model model) {
-        List<BookResponse> books = bookService.getAllBooks();
-        model.addAttribute("books", books);
-        return "pages/books";
+    public String getAllBooks(Model model, HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        if (user != null){
+            List<BookResponse> books = bookService.getAllBooks();
+            model.addAttribute("user", user);
+            model.addAttribute("books", books);
+            return "pages/books";
+        } else {
+            return "redirect:/login";
+        }
     }
 
     @GetMapping("/admin/books/create")
