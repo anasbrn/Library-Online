@@ -3,6 +3,7 @@ package com.libraryonline.LibraryOnline.model.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Table(name = "users")
 @Entity
@@ -23,6 +24,9 @@ public class User {
 
     @Column(nullable = false)
     private String role;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Favorite> favorites;
 
     public User(Integer id, String name, String username, String email, String password, String role) {
         this.id = id;

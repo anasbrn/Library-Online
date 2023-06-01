@@ -16,6 +16,8 @@ public class Favorite {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "book_id")
     private Book book;
+
+    @ManyToOne()
+    private User user;
 }
