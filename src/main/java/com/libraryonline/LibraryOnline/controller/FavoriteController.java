@@ -31,8 +31,6 @@ public class FavoriteController {
 
     @PostMapping("/favorite/store")
     public String addToFavorite(@RequestParam("book_id") Integer bookId, @RequestParam("user_id") Integer userId) {
-        System.out.println("bbbbbbbbokId" + bookId);
-        System.out.println("useeeeeeeeerId" + userId);
         Favorite favorite = new Favorite();
         favorite.setBookId(bookId);
         favorite.setUserId(userId);

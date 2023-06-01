@@ -28,7 +28,6 @@ public class Favorite {
         this.book.setId(bookId);
     }
 
-
     public void setUserId(Integer userId) {
         this.user = new User(1, "krforfk", "okrofkr", "doekf", "rofkr", "orkfro");
         this.user.setId(userId);
