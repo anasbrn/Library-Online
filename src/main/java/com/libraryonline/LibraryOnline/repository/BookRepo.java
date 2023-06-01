@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 public interface BookRepo extends JpaRepository<Book, Integer> {
-    @Query("SELECT new com.libraryonline.LibraryOnline.response.BookResponse(b.id, b.title, b.author, b.description, b.image, b.category.name, b.file) FROM Book b")
+    @Query("SELECT new com.libraryonline.LibraryOnline.response.BookResponse(b.id, b.title, b.description, b.author, b.image, b.category.name, b.file) FROM Book b")
     List<BookResponse> findAllBooksWithCategoryName();
 }

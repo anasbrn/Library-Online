@@ -1,15 +1,13 @@
 package com.libraryonline.LibraryOnline.model.entity;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Table(name = "users")
 @Entity
 @Data
-@NoArgsConstructor
+
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,4 +20,40 @@ public class User {
     private String email;
     @Column(nullable = false)
     private String password;
+
+    @Column(nullable = false)
+    private String role;
+
+    public User(Integer id, String name, String username, String email, String password, String role) {
+        this.id = id;
+        this.name = name;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getRole() {
+        return role;
+    }
 }
