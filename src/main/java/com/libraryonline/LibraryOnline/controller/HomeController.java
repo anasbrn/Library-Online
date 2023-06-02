@@ -49,15 +49,27 @@ public class HomeController {
         }
     }
     @GetMapping("/admin/books")
-    public String booksPage(Model model) {
+    public String booksPage(HttpSession session, Model model) {
+        User user = (User) session.getAttribute("user");
         List<BookResponse> books = bookService.getAllBooks();
-        model.addAttribute("books", books);
-        return "/pages/dashboard/books/index";
+        if (user != null) {
+            model.addAttribute("user", user);
+            model.addAttribute("books", books);
+            return "/pages/dashboard/books/index";
+        } else {
+            return "redirect:/login";
+        }
     }
     @GetMapping("/admin/categories")
-    public String categoriesPage(Model model) {
+    public String categoriesPage(HttpSession session, Model model) {
+        User user = (User) session.getAttribute("user");
         List<Category> categories = categoryService.getAllCategories();
-        model.addAttribute("categories", categories);
-        return "/pages/dashboard/categories/index";
+        if (user != null) {
+            model.addAttribute("user", user);
+            model.addAttribute("categories", categories);
+            return "/pages/dashboard/categories/index";
+        } else {
+            return "redirect:/login";
+        }
     }
 }

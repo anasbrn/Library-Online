@@ -21,11 +21,6 @@ public class LoginController {
     public String loginPage() {
         return "pages/auth/login";
     }
-    @GetMapping("/register")
-    public String registerPage() {
-        return "pages/auth/register";
-    }
-
     @PostMapping("/login")
     public String login(@RequestParam("username") String username, @RequestParam("password") String password, HttpSession session) {
         User user = this.userService.findUser(username, password);
