@@ -6,17 +6,38 @@
 </head>
 <body>
     <header th:include="/pages/nav" th:with="currentUser=${user}"></header>
-    <section>
+    <main role="main">
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner" style="height: 100vh">
+            <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="/images/slide1.jpg" class="d-block w-100" alt="...">
+                    <img class="first-slide" src="/images/slide1.jpg" alt="First slide" style="height: 80vh; width: 100vw">
+                    <div class="container">
+                        <div class="carousel-caption text-left">
+                            <h1 class="fw-bold">Self Develepoment</h1>
+                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                            <p><a class="btn btn-lg btn-primary" th:href="@{/login}" role="button">Explorer</a></p>
+                        </div>
+                    </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="/images/slide2.jpg" class="d-block w-100" alt="...">
+                    <img class="second-slide" src="/images/slide2.jpg" alt="Second slide" style="height: 80vh; width: 100vw">
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h1 class="fw-bold">Mystery</h1>
+                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                            <p><a class="btn btn-lg btn-primary" th:href="@{/books}" role="button">Get Started</a></p>
+                        </div>
+                    </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="/images/slide3.jpg" class="d-block w-100" alt="...">
+                    <img class="third-slide" src="/images/slide3.jpg" alt="Third slide" style="height: 80vh; width: 100vw">
+                    <div class="container">
+                        <div class="carousel-caption text-right">
+                            <h1 class="fw-bold">Adventure</h1>
+                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                            <p><a class="btn btn-lg btn-primary" th:href="@{/books}" role="button">login</a></p>
+                        </div>
+                    </div>
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -28,47 +49,40 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-    </section>
-    <section class="mt-5">
-        <h1 class="fw-bold text-center">Recent Books</h1>
-        <p class="text-center">Here you can see the recent books of our website<br> we wish you will find what you looking for.</p>
-        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
-            <div class="carousel-inner d-flex justify-content-center">
-                <div class="carousel-item active">
-                    <div class="product-wrapper mb-40 hidden-sm">
-                        <div class="product-img">
-                            <a href="">
-                                <img src="/images/books/the-power-of-now.jpg" alt="book" class="primary" width="150">
-                            </a>
-                            <p>
-                                <a href="" class="text-center text-decoration-none">The power of now</a>
-                            </p>
-                        </div>
-                    </div>
+        <div class="container marketing">
+            <div class="row">
+                <div class="col-lg-4">
+                    <img class="rounded-circle" src="/icons/self-development.png" width="140" height="140">
+                    <h2>Self development</h2>
+                    <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
                 </div>
-                <div class="carousel-item">
-                    <div class="product-wrapper mb-40 hidden-sm">
-                        <div class="product-img">
-                            <a href="">
-                                <img src="/images/books/the-way-of-the-kings.jpg" alt="book" class="primary" width="150">
-                            </a>
-                            <p>
-                                <a href="" class="text-center text-decoration-none">The way of kings</a>
-                            </p>
-                        </div>
-                    </div>
+                <div class="col-lg-4">
+                    <img class="rounded-circle" src="/icons/mystery.png" width="140" height="140">
+                    <h2>Mystery</h2>
+                    <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <img class="rounded-circle" src="/icons/adventurer.png" alt="Generic placeholder image" width="140" height="140">
+                    <h2>Adventure</h2>
+                    <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
                 </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true" style="background-color: #d17e37"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true" style="background-color: #d17e37"></span>
-                <span class="visually-hidden bg-dark">Next</span>
-            </button>
+            <hr class="featurette-divider">
+
+            <div class="row featurette">
+                <div class="col-md-7">
+                    <h2 class="featurette-heading">The power of now</h2>
+                    <h4>Eckart Tolle</h4>
+                    <p class="lead">The Power of Now: A Guide to Spiritual Enlightenment is a book by Eckhart Tolle it presents itself as a discussion <br>
+                        about how people interact with themselves and others. The concept of self reflection and presence in the moment are presented along with simple exercises for the achievement of its principles..</p>
+                </div>
+                <div class="col-md-5">
+                    <img class="featurette-image img-fluid mx-auto" src="/images/books/the-power-of-now.jpg" alt="Generic placeholder image">
+                </div>
+            </div>
+            <hr class="featurette-divider">
         </div>
-    </section>
+    </main>
     <section class="bg-dark text-center text-white mt-5 py-3">
         2023 &copy; All rights reserved for <span>EQRAA</span>
     </section>

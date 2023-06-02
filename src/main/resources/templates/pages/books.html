@@ -36,7 +36,7 @@
                                 <input type="hidden" name="user_id" th:value="${user.getId()}">
                                 <div>
                                     <button class="btn btn-outline-dark mt-auto" type="submit" th:type="${favoriteBooks.contains(book) ? 'button' : 'submit'}">
-                                        <i th:classappend="${favoriteBooks.contains(book) ? 'bi bi-check text-danger' : 'bi bi-star'}"></i>
+                                        <i th:classappend="${favoriteBooks.contains(book) ? 'bi bi-check text-primary' : 'bi bi-star'}"></i>
                                     </button>
                                 </div>
                             </form>

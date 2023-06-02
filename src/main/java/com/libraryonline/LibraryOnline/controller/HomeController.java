@@ -28,8 +28,12 @@ public class HomeController {
     @GetMapping("/home")
     public String homePage(HttpSession session, Model model) {
         User user = (User) session.getAttribute("user");
+        if (user != null){
         model.addAttribute("user", user);
         return "pages/home";
+        } else {
+            return "pages/home";
+        }
     }
 
     @GetMapping("/admin/dashboard")

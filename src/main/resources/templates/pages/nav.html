@@ -39,7 +39,7 @@
                     <a class="nav-link" aria-current="page" href="/about-us" th:classappend="${#httpServletRequest.getRequestURI().equals('/about-us')} ? 'active' : ''">About Us</a>
                 </li>
             </ul>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent1" th:classappend="${currentUser} != null ? 'd-block' : 'd-none'">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent1" th:if="${currentUser} != null">
                 <ul class="navbar-nav d-flex align-items-center navbar-light ms-auto">
                     <li class="dropdown">
                         <a href="#" data-bs-toggle="dropdown"
@@ -59,7 +59,7 @@
                     </li>
                 </ul>
             </div>
-            <div th:classappend="${currentUser} == null ? 'd-block' : 'd-none'">
+            <div th:unless="${currentUser} != null">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                     <li class="nav-item">
                         <a class="nav-link" href="/login">Login</a>
