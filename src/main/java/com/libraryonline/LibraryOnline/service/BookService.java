@@ -33,6 +33,10 @@ public class BookService {
         return bookOptional.map(this::convertToBookResponse);
     }
 
+    public List<BookResponse> getFavoriteBooks(Integer userId) {
+        return this.bookRepo.getFavoriteBooks(userId);
+    }
+
     private BookResponse convertToBookResponse(Book book) {
         BookResponse bookResponse = new BookResponse();
         bookResponse.setId(book.getId());

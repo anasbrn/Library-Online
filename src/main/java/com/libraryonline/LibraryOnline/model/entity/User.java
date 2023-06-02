@@ -37,12 +37,16 @@ public class User {
         this.role = role;
     }
 
-    public String getName() {
-        return name;
+    public User() {
+
     }
 
     public Integer getId() {
         return id;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public String getUsername() {

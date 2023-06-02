@@ -27,7 +27,27 @@
                     <a class="nav-link" aria-current="page" href="/about-us" th:classappend="${#httpServletRequest.getRequestURI().equals('/about-us')} ? 'active' : ''">About Us</a>
                 </li>
             </ul>
-            <div>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent1" th:classappend="${currentUser} != null ? 'd-block' : 'd-none'">
+                <ul class="navbar-nav d-flex align-items-center navbar-light ms-auto">
+                    <li class="dropdown">
+                        <a href="#" data-bs-toggle="dropdown"
+                           class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                            <div th:class="d-flex">
+                                <div class="avatar me-1">
+                                    <img src="/icons/user.png" width="30" alt="" srcset="">
+                                </div>
+                                <div class="d-none d-md-block d-lg-inline-block" th:text="${'Hi! ' + #strings.capitalize(currentUser.getName())}"></div>
+                            </div>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <a class="dropdown-item" th:href="@{/favorites}"><i data-feather="star"></i> My Favorites</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" th:href="@{/logout}"><i data-feather="log-out"></i> Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div th:classappend="${currentUser} == null ? 'd-block' : 'd-none'">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                     <li class="nav-item">
                         <a class="nav-link" href="/login">Login</a>

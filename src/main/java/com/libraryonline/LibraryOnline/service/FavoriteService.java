@@ -2,7 +2,10 @@ package com.libraryonline.LibraryOnline.service;
 
 import com.libraryonline.LibraryOnline.model.entity.Favorite;
 import com.libraryonline.LibraryOnline.repository.FavoriteRepo;
+import com.libraryonline.LibraryOnline.response.FavoriteResponse;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class FavoriteService {
@@ -14,6 +17,10 @@ public class FavoriteService {
 
     public Favorite addToFavorite(Favorite favorite){
         return this.favoriteRepo.save(favorite);
+    }
+
+    public List<FavoriteResponse> getFavoritBooks(){
+        return this.favoriteRepo.findAllBy();
     }
 
     public void unfavorite(Integer id){

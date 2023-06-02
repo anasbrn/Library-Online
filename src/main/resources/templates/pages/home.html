@@ -5,7 +5,7 @@
     <title>Home page</title>
 </head>
 <body>
-    <header th:include="/pages/nav"></header>
+    <header th:include="/pages/nav" th:width="currentUser=${user}"></header>
     <section>
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner" style="height: 100vh">

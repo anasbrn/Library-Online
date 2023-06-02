@@ -1,12 +1,12 @@
 package com.libraryonline.LibraryOnline.controller;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.libraryonline.LibraryOnline.model.entity.Book;
 import com.libraryonline.LibraryOnline.model.entity.Category;
 import com.libraryonline.LibraryOnline.model.entity.User;
 import com.libraryonline.LibraryOnline.response.BookResponse;
+import com.libraryonline.LibraryOnline.response.FavoriteResponse;
 import com.libraryonline.LibraryOnline.service.BookService;
 import com.libraryonline.LibraryOnline.service.CategoryService;
+import com.libraryonline.LibraryOnline.service.FavoriteService;
 import javassist.NotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,17 +21,21 @@ import java.util.Optional;
 public class BookController {
     private final BookService bookService;
     private final CategoryService categoryService;
+    private final FavoriteService favoriteService;
 
-    public BookController(BookService bookService, CategoryService categoryService) {
+    public BookController(BookService bookService, CategoryService categoryService, FavoriteService favoriteService) {
         this.bookService = bookService;
         this.categoryService = categoryService;
+        this.favoriteService = favoriteService;
     }
     @GetMapping("/books")
     public String getAllBooks(Model model, HttpSession session) {
         User user = (User) session.getAttribute("user");
         if (user != null){
+            List<FavoriteResponse> favorites = favoriteService.getFavoritBooks();
             List<BookResponse> books = bookService.getAllBooks();
             model.addAttribute("user", user);
+            model.addAttribute("favorites", favorites);
             model.addAttribute("books", books);
             return "pages/books";
         } else {
