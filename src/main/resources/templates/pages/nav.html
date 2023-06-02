@@ -6,6 +6,13 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Nav</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+
+    <link rel="stylesheet" th:href="@{/css/Chart.min.css}">
+
+    <link rel="stylesheet" th:href="@{/css/perfect-scrollbar.css}">
+    <link rel="stylesheet" th:href="@{/css/app.css}">
+
     <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
     <link rel="stylesheet" href="/css/bootstrap.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
@@ -23,7 +30,10 @@
                     <a class="nav-link" aria-current="page" href="/home" th:classappend="${#httpServletRequest.getRequestURI().equals('/home')} ? 'active' : ''">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/books" th:classappend="${#httpServletRequest.getRequestURI().equals('/books')} ? 'active' : ''">Books</a>
+                    <form th:action="@{/books}">
+                        <input type="hidden" name="book_id" value="${book.getId}">
+                        <button class="nav-link" type="submit" aria-current="page" th:classappend="${#httpServletRequest.getRequestURI().equals('/books')} ? 'active' : ''">Books</button>
+                    </form>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="/about-us" th:classappend="${#httpServletRequest.getRequestURI().equals('/about-us')} ? 'active' : ''">About Us</a>
@@ -42,9 +52,9 @@
                             </div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
-                            <a class="dropdown-item" th:href="@{/favorites}"><i data-feather="star"></i> My Favorites</a>
+                            <a class="dropdown-item" th:href="@{/favorites}"><i class="bi bi-star"></i> My Favorites</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" th:href="@{/logout}"><i data-feather="log-out"></i> Logout</a>
+                            <a class="dropdown-item" th:href="@{/logout}"><i class="bi bi-arrow-left"></i> Logout</a>
                         </div>
                     </li>
                 </ul>

@@ -34,17 +34,10 @@
                             <form th:action="@{favorite/store}" method="post" enctype="application/x-www-form-urlencoded">
                                 <input type="hidden" name="book_id" th:value="${book.getId()}">
                                 <input type="hidden" name="user_id" th:value="${user.getId()}">
-                                <div th:each="favorite : ${favorites}">
-                                    <button class="btn btn-outline-dark mt-auto" th:if="${favorite.getBookId()} == ${book.getId()}" type="button">
-                                        <i class="bi bi-check"></i>
-                                        </th:block>
+                                <div>
+                                    <button class="btn btn-outline-dark mt-auto" type="submit" th:type="${favoriteBooks.contains(book) ? 'button' : 'submit'}">
+                                        <i th:classappend="${favoriteBooks.contains(book) ? 'bi bi-check text-danger' : 'bi bi-star'}"></i>
                                     </button>
-
-                                    <button class="btn btn-outline-dark mt-auto" th:unless="${favorite.getBookId()} == ${book.getId()}" type="submit">
-                                        <i class="bi bi-star"></i>
-                                        </th:block>
-                                    </button>
-
                                 </div>
                             </form>
                         </div>

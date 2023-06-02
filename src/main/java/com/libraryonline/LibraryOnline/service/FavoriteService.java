@@ -19,8 +19,8 @@ public class FavoriteService {
         return this.favoriteRepo.save(favorite);
     }
 
-    public List<FavoriteResponse> getFavoritBooks(){
-        return this.favoriteRepo.findAllBy();
+    public List<FavoriteResponse> getFavoritBook(Integer userId, Integer bookId){
+        return this.favoriteRepo.findAllBy(userId, bookId);
     }
 
     public void unfavorite(Integer id){

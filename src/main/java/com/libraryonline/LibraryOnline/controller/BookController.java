@@ -32,10 +32,10 @@ public class BookController {
     public String getAllBooks(Model model, HttpSession session) {
         User user = (User) session.getAttribute("user");
         if (user != null){
-            List<FavoriteResponse> favorites = favoriteService.getFavoritBooks();
+            List<BookResponse> favoriteBooks = this.bookService.getFavoriteBooks(user.getId());
             List<BookResponse> books = bookService.getAllBooks();
             model.addAttribute("user", user);
-            model.addAttribute("favorites", favorites);
+            model.addAttribute("favoriteBooks", favoriteBooks);
             model.addAttribute("books", books);
             return "pages/books";
         } else {

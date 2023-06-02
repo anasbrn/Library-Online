@@ -1,5 +1,9 @@
 package com.libraryonline.LibraryOnline.response;
 
+import com.libraryonline.LibraryOnline.model.entity.Book;
+
+import java.util.Objects;
+
 public class BookResponse {
     private Integer id;
     private String title;
@@ -65,4 +69,18 @@ public class BookResponse {
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        BookResponse other = (BookResponse) obj;
+        // Compare only the title for equality
+        return Objects.equals(title, other.getTitle());
+    }
+
 }

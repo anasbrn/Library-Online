@@ -10,6 +10,6 @@ import java.util.List;
 
 @Repository
 public interface FavoriteRepo extends JpaRepository<Favorite, Integer> {
-    @Query("SELECT new com.libraryonline.LibraryOnline.response.FavoriteResponse(f.id, f.book.id, f.user.id) from Favorite f")
-    List<FavoriteResponse> findAllBy();
+    @Query("SELECT new com.libraryonline.LibraryOnline.response.FavoriteResponse(f.id, f.book.id, f.user.id) from Favorite f inner join User u ON :userId = f.user.id inner join Book on :bookId = f.book.id")
+    List<FavoriteResponse> findAllBy(Integer userId, Integer bookId);
 }
